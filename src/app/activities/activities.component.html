@@ -1,0 +1,32 @@
+<form class="p-4">
+  <div class="mb-3 row">
+    <label class="col-xs-3 col-sm-auto col-form-label">
+      Select fields for aggregations</label>
+    <div class="col-xs-3 col-sm-auto">
+      <ng-select [items]="fields"
+                 bindLabel="name"
+                 bindValue="name"
+                 placeholder="Select fields"
+                 [multiple]="true"
+                 [(ngModel)]="selectedFields"
+                 (change)="selectedItemChange($event)"
+                 name="aggregationFields"></ng-select>
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+<!--      <th scope="col">N.</th>-->
+      <th *ngFor = 'let key of tableCol'>{{key}}</th>
+<!--      <th>Hours</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let activity of activities; let i = index;">
+      <td *ngFor = 'let key of tableCol'>{{getActivityInfo(activity, key)}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</form>
