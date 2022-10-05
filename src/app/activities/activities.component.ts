@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { groupBy, pick, isEmpty} from 'lodash';
+import {isEmpty} from 'lodash';
 import {Observable} from "rxjs";
-import {map, tap} from 'rxjs/operators';
+import {tap} from 'rxjs/operators';
 import { FieldType } from './enums/FieldType';
 import {Activity} from "./models/activity";
 import {ActivitiesService} from "./services/activities.service";
@@ -50,10 +50,7 @@ export class ActivitiesComponent implements OnInit {
           this.tableCol = this.defaultCol;
           return;
         }
-          this.activities = this.customAggregation(data);
-          this.activities.forEach(activity => {
-            return pick(activity, this.tableCol);
-          });
+
         this.activities = this.selectedFields.length > 0 ? this.customAggregation(data) : data;
         this.tableCol = this.selectedFields.concat(['hours']);
         this.cdr.detectChanges();

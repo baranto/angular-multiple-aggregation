@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, of} from "rxjs";
-import {Activity} from "../models/activity";
-import {Activities} from "../helpers/data";
+import { Observable, of} from "rxjs";
+import { Activity } from "../models/activity";
+import { Activities } from "../helpers/data";
 
 @Injectable({
   providedIn: 'root'
